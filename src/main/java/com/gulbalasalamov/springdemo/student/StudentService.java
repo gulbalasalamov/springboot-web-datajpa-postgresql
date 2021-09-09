@@ -1,5 +1,7 @@
 package com.gulbalasalamov.springdemo.student;
 
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.time.LocalDate;
@@ -9,6 +11,7 @@ import java.util.List;
 /**
  * Service layer - Class to serve as business logic for managing students
  */
+@Service // type of component
 public class StudentService {
     public List<Student> getStudents() {
         return List.of(
