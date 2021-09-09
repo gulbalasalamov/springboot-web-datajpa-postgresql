@@ -16,23 +16,14 @@ import java.util.List;
 @RequestMapping(path = "api/v1/student")
 public class StudentController {
 
+    private final StudentService studentService;
+
+    public StudentController(StudentService studentService) {
+        this.studentService = studentService;
+    }
+
     @GetMapping //	//Annotate it to get something out of from server. This is rest point
     public List<Student> getStudents() {
-        return List.of(
-                new Student(
-                        1L,
-                        "Gulbala",
-                        "gulbala@gmail.com",
-                        LocalDate.of(1990, Month.NOVEMBER, 20),
-                        30
-                ),
-                new Student(
-                        2L,
-                        "Ahmet",
-                        "ahmet@gmail.com",
-                        LocalDate.of(1989,Month.SEPTEMBER,9),
-                        31
-                )
-        );
+        return studentService.getStudents();
     }
 }
