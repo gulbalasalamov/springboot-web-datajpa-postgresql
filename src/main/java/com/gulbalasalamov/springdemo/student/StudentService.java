@@ -1,5 +1,6 @@
 package com.gulbalasalamov.springdemo.student;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,22 +14,15 @@ import java.util.List;
  */
 @Service // type of component
 public class StudentService {
+
+    private final StudentRepository studentRepository;
+
+    @Autowired // Dependency injection
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
+
     public List<Student> getStudents() {
-        return List.of(
-                new Student(
-                        1L,
-                        "Gulbala",
-                        "gulbala@gmail.com",
-                        LocalDate.of(1990, Month.NOVEMBER, 20),
-                        30
-                ),
-                new Student(
-                        2L,
-                        "Ahmet",
-                        "ahmet@gmail.com",
-                        LocalDate.of(1989,Month.SEPTEMBER,9),
-                        31
-                )
-        );
+        return studentRepository.findAll(); // returns list
     }
 }
