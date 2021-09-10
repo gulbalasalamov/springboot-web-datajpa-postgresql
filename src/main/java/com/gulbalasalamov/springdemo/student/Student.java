@@ -1,6 +1,7 @@
 package com.gulbalasalamov.springdemo.student;
 
 import java.time.LocalDate;
+import java.time.Period;
 import javax.persistence.*;
 
 /**
@@ -25,6 +26,7 @@ public class Student {
     private String name;
     private String email;
     private LocalDate dob; //date of birth
+    @Transient // means no need to have it as column in db. Age is calculatable
     private Integer age;
 
     public Student() {
@@ -33,23 +35,20 @@ public class Student {
     public Student(Long id,
                    String name,
                    String email,
-                   LocalDate dob,
-                   Integer age) {
+                   LocalDate dob
+                   ) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.dob = dob;
-        this.age = age;
     }
     //Database will generate id for us
     public Student(String name,
                    String email,
-                   LocalDate dob,
-                   Integer age) {
+                   LocalDate dob) {
         this.name = name;
         this.email = email;
         this.dob = dob;
-        this.age = age;
     }
 
     public Long getId() {
@@ -85,7 +84,7 @@ public class Student {
     }
 
     public Integer getAge() {
-        return age;
+        return Period.between(this.dob,LocalDate.now()).getYears();
     }
 
     public void setAge(Integer age) {
