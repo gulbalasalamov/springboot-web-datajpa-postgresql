@@ -29,7 +29,7 @@ public class StudentController {
     }
 
 
-    @PostMapping
+    @PostMapping //Take request body and map into student
     public void registerNewStudent(@RequestBody Student student){//Take request body and map student
         studentService.addNewStudent(student);
     }

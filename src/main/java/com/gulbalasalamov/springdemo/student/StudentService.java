@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Service layer - Class to serve as business logic for managing students
@@ -29,6 +30,12 @@ public class StudentService {
 
     @PostMapping
     public void addNewStudent(Student student) {
-        System.out.println(student);
+        //TODO: complex verification check later
+        Optional<Student> studentOptional = studentRepository
+                .findStudentByEmail(student.getEmail());
+        if (studentOptional.isPresent()){
+            throw new IllegalStateException("email taken");
+        }
+        studentRepository.save(student);
     }
 }
