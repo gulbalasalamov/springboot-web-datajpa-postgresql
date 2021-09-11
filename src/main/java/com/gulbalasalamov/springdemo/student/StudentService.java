@@ -33,9 +33,18 @@ public class StudentService {
         //TODO: complex verification check later
         Optional<Student> studentOptional = studentRepository
                 .findStudentByEmail(student.getEmail());
-        if (studentOptional.isPresent()){
+        if (studentOptional.isPresent()) {
             throw new IllegalStateException("email taken");
         }
         studentRepository.save(student);
+    }
+
+    public void deleteStudent(Long studentId) {
+        boolean studentExists = studentRepository.existsById(studentId);
+        if (!studentExists) {
+            throw new IllegalStateException(
+                    "student with id " + studentId + " does not exist.");
+        }
+        studentRepository.deleteById(studentId);
     }
 }
