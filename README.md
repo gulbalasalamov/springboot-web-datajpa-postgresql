@@ -22,6 +22,8 @@ All layers are communicating each other.
 
 - The Data Access layer is responsible for connecting to database. 
 
+The API layer is talking to Service layer to get some data, and Service layer talks to Data Access layer to get data to return so that it does a round trip all the way back between layers.
+
 ![Intro Page](https://github.com/gulbalasalamov/springboot-web-datajpa-postgresql/blob/master/docs/diagram.png)
 
 ## Documentation
@@ -29,12 +31,70 @@ End points:
 
 GET http://localhost:8080/api/v1/student
 
+Following request will populate and list all records in database.
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Gulbala",
+    "email": "gulbala@gmail.com",
+    "dob": "1990-11-20",
+    "age": 30
+  },
+  {
+    "id": 2,
+    "name": "Alex",
+    "email": "alex@gmail.com",
+    "dob": "2004-11-05",
+    "age": 16
+  }
+]
+```
 POST http://localhost:8080/api/v1/student
 
+A new record in database with given name, email and dob is created. Specific id generated automatically and age calculated.
+
+
+```json
+{
+  "name": "Daria",
+  "email": "daria@gmail.com",
+  "dob": "1994-07-15"
+}
+```
+
 PUT http://localhost:8080/api/v1/student/{{studentId}}
+> PUT ht<span>tp://localhost:8080/api/v1/student/3?name=Daria DA&email=daria_new'@'gmail.com
+ 
+ Selected record's name and email associated with provided id is updated.
+
+```json
+[
+  ...
+  {
+    "id": 3,
+    "name": "Daria DA",
+    "email": "daria_new@gmail.com",
+    "dob": "1994-07-15",
+    "age": 27
+  }
+ ...
+]
+```
 
 DELETE http://localhost:8080/api/v1/student/{{studentId}}
+ > DELETE ht<span>tp://localhost:8080/api/v1/student/2
  
+Selected record and its information associated with provided id is removed.
+ 
+## Running .jar and multiple instance of the app 
+
+
 Packaging application into .jar, multiple instance of the application can be run. To run another instance of the app, start it in another port. 
-> java -jar springdemo-0.0.1-SNAPSHOT.jar --server.port=8082 
+
+ > java -jar springdemo-0.0.1-SNAPSHOT.jar --server.port=8082 
+ 
+ ![Intro Page](https://github.com/gulbalasalamov/springboot-web-datajpa-postgresql/blob/master/docs/jar_instances.png)
+
 
