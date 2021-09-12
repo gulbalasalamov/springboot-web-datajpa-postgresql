@@ -12,4 +12,14 @@ This demo app is the introduction and demonstration of this framework. It aims t
 
 ## UML Class Diagram
 
+The diagram below illustrates usa case of backend infastrcuture of app, excluding the frontend. 
+
+All layers are communicating each other. 
+
+- The API layer receives GET, POST, PUT and DELETE requests. 
+
+- The Service layer is essentially for business logic. 
+
+- The Data Access layer is responsible for connecting to database. 
+
 ![Intro Page](https://github.com/gulbalasalamov/springboot-web-datajpa-postgresql/blob/master/docs/diagram.png)
