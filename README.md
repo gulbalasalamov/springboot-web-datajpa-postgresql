@@ -92,9 +92,11 @@ Selected record and its information associated with provided id is removed.
 
 
 Packaging application into .jar, multiple instance of the application can be run. To run another instance of the app, start it in another port. 
-
+  
  > java -jar springdemo-0.0.1-SNAPSHOT.jar --server.port=8082 
  
  ![Intro Page](https://github.com/gulbalasalamov/springboot-web-datajpa-postgresql/blob/master/docs/jar_instances.png)
+
+the .jar file can be accessed from releases: https://github.com/gulbalasalamov/springboot-web-datajpa-postgresql/releases/tag/v1.0
 
 
