@@ -1,8 +1,8 @@
 ## Spring Boot app
 A mini project for Spring Boot with dependencies of:
-- Spring Web (Builds web, including RESTful, applications using Spring MVC)
-- Spring Data JPA (Persist data in SQL stores with Java Persistence API using Spring Data and Hibernate)
-- PostgreSQL Driver (JDBC & R2DBC driver allowing Java programs to connect to PostgreSQL database using standart Java code)
+- Spring Web --> Builds web, including RESTful, applications using Spring MVC
+- Spring Data JPA --> Persists data in SQL stores with Java Persistence API using Spring Data and Hibernate
+- PostgreSQL Driver --> JDBC & R2DBC driver allowing Java programs to connect to PostgreSQL database using standart Java code
 
 The purpose of this app is to build the API consisting of 3 layers (API layer, Service layer, Data Access layer) and connect to real database. 
 
